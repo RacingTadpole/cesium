@@ -42,5 +42,10 @@
   "sub": false,
   "supernew": false,
   "browser": true,
-  "predef": [ "JSON" ]
+  "predef": [
+    "require",
+    "console",
+    "Sandcastle",
+    "Cesium"
+  ]
 }

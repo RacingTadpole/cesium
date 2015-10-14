@@ -9,8 +9,6 @@ var jsHintOptions = loadJsHintOptionsFile(attributes.get('jshintoptionspath'));
 
 jsHintOptions.predef = ['require', 'console', 'Sandcastle', 'Cesium'];
 
-var contents = '\
-// This file is automatically rebuilt by the Cesium build process.\n\
-var sandcastleJsHintOptions = ' + JSON.stringify(jsHintOptions, null, 2) + ';';
+var contents = JSON.stringify(jsHintOptions, null, 2);
 
 writeFileContents(attributes.get('output'), contents);

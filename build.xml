@@ -22,7 +22,7 @@
 			<demos dir="${galleryDirectory}" includes="**/*.html" excludes="${exclude.development.gallery}" />
 		</createGalleryList>
 
-		<createSandcastleJsHintOptions output="${sandcastleDirectory}/jsHintOptions.js" jshintoptionspath="${jsHintOptionsPath}" />
+		<createSandcastleJsHintOptions output="${sandcastleDirectory}/.jshintrc" jshintoptionspath="${jsHintOptionsPath}" />
 	</target>
 
 	<target name="combine" depends="build,combineJavaScript" description="Combines all source files into a single stand-alone script." />
@@ -96,7 +96,7 @@
 			<fileset dir="${instrumentedDirectory}" defaultexcludes="false" />
 			<fileset dir="${shadersDirectory}" includes="**/*.js" excludes="*.profile.js" />
 			<fileset dir="${specsDirectory}" includes="SpecList.js" />
-			<fileset dir="${sandcastleDirectory}" includes="jsHintOptions.js" />
+			<fileset dir="${sandcastleDirectory}" includes=".jshintrc" />
 			<fileset dir="${galleryDirectory}" includes="gallery-index.js" />
 			<fileset dir="." includes="Cesium-*.zip" />
 		</delete>
@@ -218,7 +218,7 @@
 	</scriptdef>
 
 	<target name="jsHint" depends="build" description="Runs JSHint on the entire source tree.">
-		<runJsHint jshintpath="${jsHintPath}" jshintoptionspath="${jsHintOptionsPath}" sandcastlejshintoptionspath="${sandcastleDirectory}/jsHintOptions.js" failureproperty="jsHint.failure">
+		<runJsHint jshintpath="${jsHintPath}" jshintoptionspath="${jsHintOptionsPath}" sandcastlejshintoptionspath="${sandcastleDirectory}/.jshintrc" failureproperty="jsHint.failure">
 			<sourcefiles dir="${basedir}">
 				<include name="Source/**/*.js" />
 				<exclude name="Source/Shaders/**" />
@@ -259,7 +259,7 @@
 				<exclude name="Apps/Sandcastle/Sandcastle-header.js" />
 				<exclude name="Apps/Sandcastle/Sandcastle-warn.js" />
 				<exclude name="Apps/Sandcastle/gallery/gallery-index.js" />
-				<exclude name="Apps/Sandcastle/jsHintOptions.js" />
+				<exclude name="Apps/Sandcastle/.jshintrc" />
 
 				<exclude name="**/*.profile.js" />
 			</sourcefiles>
